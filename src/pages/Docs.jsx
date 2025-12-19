@@ -957,6 +957,166 @@ function recommendTier(requirements) {
         language: 'javascript'
       }
     ]
+  },
+  marketplace: {
+    title: 'Marketplace',
+    icon: 'grid',
+    sections: [
+      {
+        title: 'Marketplace Overview',
+        description: 'The TaskBoard Marketplace is a decentralized task board where users can post robot tasks and other users can take and complete them.',
+        code: `// MARKETPLACE FLOW
+// ════════════════════════════════════════════════════════════════
+
+// 1. TASK CREATION
+// ─────────────────────────────────────────────────────────────────
+// Any user can create a task specifying:
+// • Title and description
+// • Required robot type (Drone, Humanoid, Delivery Bot, Industrial Arm)
+// • Location where task should be performed
+// • Distance (optional)
+
+// 2. TASK LIFECYCLE
+// ─────────────────────────────────────────────────────────────────
+// OPEN       → Task is available for anyone to take
+// IN_PROGRESS → Someone has taken the task and is working on it
+// COMPLETED  → Task is done with workflow solution attached
+
+// 3. WORKFLOW SOLUTION
+// ─────────────────────────────────────────────────────────────────
+// When completing a task, user creates a visual workflow in Playground
+// The workflow is saved with the task and can be viewed by anyone
+// This creates a library of reusable robot automation solutions`,
+        language: 'text'
+      },
+      {
+        title: 'Creating a Task',
+        description: 'How to post a new task to the marketplace',
+        code: `// STEP BY STEP: CREATING A TASK
+// ════════════════════════════════════════════════════════════════
+
+// 1. Navigate to Marketplace page
+// 2. Click "Create New Task" button
+// 3. Fill in the form:
+
+const newTask = {
+  title: "Warehouse Security Patrol",     // Clear, descriptive title
+  description: "Patrol Zone A every 2h",  // Detailed requirements
+  robotType: "drone",                     // Required robot type
+  location: "Warehouse Zone A",           // Where to perform
+  distance: "2.5 km"                      // Optional: travel distance
+};
+
+// 4. Click "Create Task" to publish
+// 5. Your task appears in Active tasks tab
+
+// TIPS FOR GOOD TASK DESCRIPTIONS:
+// ✓ Be specific about what needs to be done
+// ✓ Include any special requirements or constraints
+// ✓ Specify expected outcomes or deliverables
+// ✓ Mention any time-sensitive aspects`,
+        language: 'javascript'
+      },
+      {
+        title: 'Taking and Completing Tasks',
+        description: 'How to accept a task and submit your solution',
+        code: `// WORKFLOW: TAKING A TASK
+// ════════════════════════════════════════════════════════════════
+
+// 1. BROWSE AVAILABLE TASKS
+// ─────────────────────────────────────────────────────────────────
+// • Use filters to find tasks by robot type
+// • Search by title, description, or location
+// • Check task details before taking
+
+// 2. TAKE THE TASK
+// ─────────────────────────────────────────────────────────────────
+// • Click on task card to view details
+// • Click "Take This Task" to claim it
+// • Task status changes to "In Progress"
+// • Task is now assigned to you
+
+// 3. BUILD THE WORKFLOW
+// ─────────────────────────────────────────────────────────────────
+// • Click "Open in Playground" to start building
+// • Task details shown in banner at top of Playground
+// • Drag and connect blocks to create solution
+// • Use "Save Progress" to save work-in-progress
+
+// 4. COMPLETE THE TASK
+// ─────────────────────────────────────────────────────────────────
+// • When workflow is ready, click "Complete Task"
+// • Workflow is saved permanently with the task
+// • Task moves to "Completed" tab
+// • Other users can view your solution`,
+        language: 'text'
+      },
+      {
+        title: 'Viewing Workflow Solutions',
+        description: 'How to view and learn from completed task solutions',
+        code: `// VIEWING COMPLETED WORKFLOWS
+// ════════════════════════════════════════════════════════════════
+
+// 1. Go to "Completed" tab in Marketplace
+// 2. Click on any completed task
+// 3. Click "View Solution" button
+// 4. Interactive workflow viewer opens showing:
+//    • Visual node graph of the workflow
+//    • All blocks used and their configuration
+//    • Connections between blocks
+//    • Who completed it and when
+
+// USE CASES FOR VIEWING SOLUTIONS:
+// ─────────────────────────────────────────────────────────────────
+// • Learn how others solve similar problems
+// • Get inspiration for your own workflows
+// • Understand best practices for robot tasks
+// • Review completed work for quality assurance
+
+// WORKFLOW VIEWER FEATURES:
+// ─────────────────────────────────────────────────────────────────
+// • Zoom and pan the workflow canvas
+// • View block configurations
+// • See connection flow (left to right)
+// • Read-only mode (cannot modify)`,
+        language: 'text'
+      },
+      {
+        title: 'Task Management',
+        description: 'Managing your created and taken tasks',
+        code: `// TASK MANAGEMENT OPTIONS
+// ════════════════════════════════════════════════════════════════
+
+// MY TASKS TAB
+// Shows tasks you created OR tasks you've taken
+
+// AS TASK CREATOR:
+// ─────────────────────────────────────────────────────────────────
+// • View all your posted tasks
+// • Delete tasks that are still "Open"
+// • Cannot delete tasks that are In Progress or Completed
+
+// AS TASK TAKER:
+// ─────────────────────────────────────────────────────────────────
+// • View tasks you've taken
+// • Cancel task (returns to Open status)
+// • Complete task with workflow solution
+
+// TASK FILTERS:
+// ─────────────────────────────────────────────────────────────────
+const filters = {
+  search: "security",        // Search in title, description, location
+  robotType: "drone",        // Filter by: drone, humanoid, delivery, industrial
+};
+
+// TABS:
+// ─────────────────────────────────────────────────────────────────
+// Active    → Open + In Progress tasks
+// Completed → Successfully completed tasks with workflows
+// My Tasks  → Your created and taken tasks`,
+        language: 'javascript'
+      }
+    ]
   }
 };
 

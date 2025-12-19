@@ -1,0 +1,290 @@
+/* Workflow Viewer Overlay */
+.workflow-viewer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 2rem;
+}
+
+.workflow-viewer-modal {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 1200px;
+  height: 85vh;
+  max-height: 800px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Header */
+.viewer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-tertiary);
+}
+
+.viewer-header-left h2 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+.viewer-task-title {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.viewer-header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.viewer-stats {
+  display: flex;
+  gap: 1rem;
+}
+
+.viewer-stats .stat {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-primary);
+  background: var(--accent-bg);
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+}
+
+.viewer-close-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.viewer-close-btn:hover {
+  color: #ffffff;
+}
+
+/* Canvas */
+.viewer-canvas {
+  flex: 1;
+  min-height: 300px;
+  position: relative;
+}
+
+.viewer-canvas .react-flow {
+  background: var(--bg-primary) !important;
+}
+
+.viewer-canvas .react-flow__controls {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.viewer-canvas .react-flow__controls-button {
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border-color);
+  fill: var(--text-secondary);
+}
+
+.viewer-canvas .react-flow__controls-button:hover {
+  background: var(--hover-bg);
+}
+
+/* Node styling in viewer */
+.viewer-node {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+}
+
+.viewer-node-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.viewer-node-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viewer-node-label {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+.viewer-node-value {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent-primary);
+}
+
+/* Block List */
+.viewer-block-list {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-tertiary);
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.viewer-block-list h4 {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.viewer-blocks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.viewer-block-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.viewer-block-item .block-number {
+  width: 20px;
+  height: 20px;
+  background: var(--accent-primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.viewer-block-item .block-icon {
+  font-size: 1rem;
+}
+
+.viewer-block-item .block-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.viewer-block-item .block-config {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-primary);
+  background: var(--accent-bg);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* Footer */
+.viewer-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border-color);
+  background: var(--card-bg);
+}
+
+.viewer-meta {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.viewer-meta strong {
+  color: #ffffff;
+}
+
+.viewer-close-btn-large {
+  padding: 0.75rem 2rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--text-secondary);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.viewer-close-btn-large:hover {
+  background: var(--hover-bg);
+  border-color: var(--accent-primary);
+  color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .workflow-viewer-overlay {
+    padding: 1rem;
+  }
+  
+  .workflow-viewer-modal {
+    height: 90vh;
+    max-height: none;
+  }
+  
+  .viewer-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .viewer-header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .viewer-block-list {
+    max-height: 120px;
+  }
+  
+  .viewer-footer {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .viewer-close-btn-large {
+    width: 100%;
+  }
+}

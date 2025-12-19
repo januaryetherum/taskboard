@@ -11,8 +11,9 @@ const navItems = [
   { path: '/', label: 'Home', icon: 'diamond' },
   { path: '/how-it-works', label: 'How It Works', icon: 'hexagon' },
   { path: '/playground', label: 'Playground', icon: 'square' },
+  { path: '/marketplace', label: 'Marketplace', icon: 'grid' },
   { path: '/robots', label: 'Robots', icon: 'circle' },
-  { path: '/docs', label: 'Docs', icon: 'grid' },
+  { path: '/docs', label: 'Docs', icon: 'terminal' },
   { path: '/about', label: 'About', icon: 'triangle' },
 ];
 

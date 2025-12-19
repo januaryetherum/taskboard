@@ -6,6 +6,7 @@ A decentralized Robot-as-a-Service protocol built on Solana. TaskBoard connects 
 
 ESN7PWw7Vu5dWsN5pBva8NABSeiPAUxAjqJNQr7pump
 
+
 ## Features
 
 - **Robot Cost Calculator** - Estimate total cost of ownership with real market data
@@ -75,8 +76,6 @@ The calculator uses real market data from 2024-2025:
 - Delivery Robots: $25,000 - $60,000
 - Industrial AMRs: $40,000 - $150,000
 - Humanoid Robots: $150,000 - $500,000
-
-
 
 Built with React, Vite, Framer Motion
 TaskBoard RaaS Marketplace © 2025

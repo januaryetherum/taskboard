@@ -83,6 +83,9 @@ export const Icon = ({ name, size = 24, color = 'currentColor', className = '' }
     grid: (
       <path d="M4 4h4v4H4V4zm6 0h4v4h-4V4zm6 0h4v4h-4V4zM4 10h4v4H4v-4zm6 0h4v4h-4v-4zm6 0h4v4h-4v-4zM4 16h4v4H4v-4zm6 0h4v4h-4v-4zm6 0h4v4h-4v-4z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" fill="none" stroke={color} />
     ),
+    terminal: (
+      <path d="M4 17l6-6-6-6M12 19h8" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" fill="none" stroke={color} />
+    ),
     
     // Arrows & Navigation
     arrowRight: (

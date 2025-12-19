@@ -1,4 +1,5 @@
 import { useState, useCallback, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ReactFlow, {
   ReactFlowProvider,
   addEdge,
@@ -11,6 +12,7 @@ import ReactFlow, {
 import 'reactflow/dist/style.css';
 import { motion } from 'framer-motion';
 import { Badge } from '../components/UIComponents';
+import { useTasks } from '../context/TasksContext';
 import './Playground.css';
 
 // ============ BLOCK CATEGORIES ============
@@ -84,12 +86,18 @@ const blockConfigs = {
 
 // ============ MAIN COMPONENT ============
 const Playground = () => {
+  const navigate = useNavigate();
   const reactFlowWrapper = useRef(null);
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
   const [selectedNode, setSelectedNode] = useState(null);
   const [selectedRobotType, setSelectedRobotType] = useState('drone');
+
+  // Tasks context
+  const { activeTaskId, getActiveTask, saveWorkflowToTask, completeTask, MIN_WORKFLOW_BLOCKS } = useTasks();
+  const activeTask = getActiveTask();
+  const [taskError, setTaskError] = useState(null);
 
   // Handle node connection
   const onConnect = useCallback(
@@ -250,8 +258,90 @@ const Playground = () => {
     alert(`🚀 Workflow started!\n\n${nodes.length} blocks will be executed.\n\nThis is a simulation - connect to real robots via API.`);
   };
 
+  // Get current workflow object
+  const getCurrentWorkflow = () => ({
+    nodes: nodes.map(n => ({ 
+      id: n.id, 
+      type: n.data.blockType, 
+      label: n.data.blockLabel,
+      icon: n.data.icon,
+      config: n.data.value, 
+      position: n.position 
+    })),
+    edges: edges.map(e => ({ source: e.source, target: e.target })),
+    savedAt: new Date().toISOString(),
+  });
+
+  // Save workflow to active task
+  const handleSaveToTask = async () => {
+    if (!activeTask) return;
+    try {
+      const workflow = getCurrentWorkflow();
+      await saveWorkflowToTask(activeTask.id, workflow);
+      setTaskError(null);
+      alert('✅ Workflow saved to task!');
+    } catch (error) {
+      setTaskError(error.message);
+    }
+  };
+
+  // Complete task with workflow
+  const handleCompleteTask = async () => {
+    if (!activeTask) return;
+    if (nodes.length < MIN_WORKFLOW_BLOCKS) {
+      setTaskError(`Workflow needs at least ${MIN_WORKFLOW_BLOCKS} blocks to complete the task`);
+      return;
+    }
+    try {
+      const workflow = getCurrentWorkflow();
+      await completeTask(activeTask.id, workflow);
+      setTaskError(null);
+      alert('🎉 Task completed! Redirecting to marketplace...');
+      navigate('/marketplace');
+    } catch (error) {
+      setTaskError(error.message);
+    }
+  };
+
+  // Cancel working on task
+  const handleCancelTask = () => {
+    navigate('/marketplace');
+  };
+
   return (
     <div className="playground-page">
+      {/* Active Task Banner */}
+      {activeTask && (
+        <div className="active-task-banner">
+          <div className="task-info">
+            <span className="task-badge">🎯 Working on Task</span>
+            <h3>{activeTask.title}</h3>
+            <p>{activeTask.description}</p>
+            <div className="task-meta-info">
+              <span>📍 {activeTask.location}</span>
+              <span>🤖 {activeTask.robotType}</span>
+            </div>
+            {taskError && (
+              <div className="task-error">
+                ⚠️ {taskError}
+                <button onClick={() => setTaskError(null)}>✕</button>
+              </div>
+            )}
+          </div>
+          <div className="task-actions">
+            <button className="btn-save" onClick={handleSaveToTask}>
+              💾 Save Progress
+            </button>
+            <button className="btn-complete" onClick={handleCompleteTask}>
+              ✅ Complete Task ({nodes.length}/{MIN_WORKFLOW_BLOCKS} blocks)
+            </button>
+            <button className="btn-cancel" onClick={handleCancelTask}>
+              ❌ Cancel
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Header */}
       <section className="playground-header">
         <Badge>Visual Workflow Builder</Badge>
@@ -422,7 +512,7 @@ const Playground = () => {
               </div>
               <div className="stat-item">
                 <span className="stat-value">{edges.length}</span>
-                <span className="stat-label">Connections</span>
+                <span className="stat-label">Connec.</span>
               </div>
             </div>
           </div>

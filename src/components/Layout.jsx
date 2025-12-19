@@ -12,6 +12,7 @@ const pageColorSchemes = {
   '/': 'blue',
   '/how-it-works': 'green',
   '/playground': 'purple',
+  '/marketplace': 'orange',
   '/robots': 'orange',
   '/docs': 'terminal',
   '/about': 'neutral',
@@ -59,6 +60,7 @@ const Footer = () => (
           <a href="/" className="footer-nav-link">Home</a>
           <a href="/how-it-works" className="footer-nav-link">How It Works</a>
           <a href="/playground" className="footer-nav-link">Playground</a>
+          <a href="/tasks" className="footer-nav-link">Task Board</a>
         </div>
         <div className="footer-nav-section">
           <h4>Resources</h4>

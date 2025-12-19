@@ -1,7 +1,11 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { Buffer } from 'buffer'
 import './index.css'
 import App from './App.jsx'
+
+// Polyfill for Solana wallet adapter
+window.Buffer = Buffer
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
