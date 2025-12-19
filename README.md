@@ -2,6 +2,10 @@
 
 A decentralized Robot-as-a-Service protocol built on Solana. TaskBoard connects businesses with autonomous robots through trustless smart contracts.
 
+## Token Contract 
+
+ESN7PWw7Vu5dWsN5pBva8NABSeiPAUxAjqJNQr7pump
+
 ## Features
 
 - **Robot Cost Calculator** - Estimate total cost of ownership with real market data
