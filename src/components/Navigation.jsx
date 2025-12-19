@@ -1,7 +1,11 @@
+import { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Icon from './Icons';
 import './Navigation.css';
+
+// Contract address
+const CONTRACT_ADDRESS = "ESN7PWw7Vu5dWsN5pBva8NABSeiPAUxAjqJNQr7pump";
 
 const navItems = [
   { path: '/', label: 'Home', icon: 'diamond' },
@@ -14,6 +18,13 @@ const navItems = [
 
 const Navigation = () => {
   const location = useLocation();
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyContract = () => {
+    navigator.clipboard.writeText(CONTRACT_ADDRESS);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <motion.nav 
@@ -51,9 +62,21 @@ const Navigation = () => {
           </div>
         </div>
 
-        {/* Right - Tagline and Social */}
+        {/* Right - Copy Contract and Social */}
         <div className="nav-right">
-          <span className="nav-tagline">RaaS on Solana</span>
+          <button className="copy-contract-btn" onClick={handleCopyContract}>
+            {copied ? (
+              <>
+                <Icon name="check" size={14} />
+                <span>Copied!</span>
+              </>
+            ) : (
+              <>
+                <Icon name="copy" size={14} />
+                <span>Copy Contract</span>
+              </>
+            )}
+          </button>
           <a 
             href="https://github.com/januaryetherum/taskboard" 
             className="social-btn" 

@@ -76,8 +76,6 @@ The calculator uses real market data from 2024-2025:
 - Industrial AMRs: $40,000 - $150,000
 - Humanoid Robots: $150,000 - $500,000
 
-Sources: Standard Bots, Qviro, industry reports
-
 
 
 Built with React, Vite, Framer Motion

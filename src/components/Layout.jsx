@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Navigation from './Navigation';
 import AnimatedBackground from './AnimatedBackground';
 import CursorFollower from './CursorFollower';
+import ChatWidget from './ChatWidget';
 import Icon from './Icons';
 import './Layout.css';
 
@@ -43,6 +44,7 @@ const Layout = ({ children }) => {
         </motion.main>
       </AnimatePresence>
       <Footer />
+      <ChatWidget />
     </div>
   );
 };
