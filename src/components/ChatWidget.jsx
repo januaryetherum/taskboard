@@ -50,6 +50,31 @@ Marketplace to browse and order robots:
 - Delivery Bot ($199/month) - Logistics, delivery
 - Industrial Arm ($799/month) - Manufacturing
 
+**ROI Calculator:**
+Tool to calculate return on investment for robot purchases. Users can:
+1. Select Robot Type (Drone, Humanoid, Delivery Bot, Industrial Arm)
+2. Choose Model Tier:
+   - Budget (lower price, 70% efficiency) - e.g., DJI Mini 3 Pro, Unitree G1, Kiwibot K3, FANUC LR Mate
+   - Standard (mid-range, 100% efficiency) - e.g., DJI Matrice 30, Unitree H1, Starship Bot, KUKA KR CYBERTECH
+   - Premium (highest price, 130-150% efficiency) - e.g., DJI Matrice 350 RTK, Boston Dynamics Atlas, Nuro R3, KUKA KR QUANTEC
+3. Set Hours of Operation (1-24 hours/day slider)
+4. Select Task Type (each robot has 4 task types with different hourly rates)
+
+**ROI Results show:**
+- Total Investment (USD + SOL)
+- Months to Payback - how long until robot pays for itself
+- Annual ROI % - yearly return percentage
+- Tasks per Day - estimated daily task completion
+- Effective $/hr - actual hourly revenue with model efficiency
+- Monthly Breakdown: Gross Revenue, Maintenance costs, Energy costs, Net Profit
+- Yearly Profit and 5-Year Projection
+
+**Example Robot Models & Prices:**
+- Drones: DJI Mini 3 Pro ($1,500), DJI Matrice 30 ($12,000), DJI Matrice 350 RTK ($28,000)
+- Humanoids: Unitree G1 ($16,000), Unitree H1 ($90,000), Boston Dynamics Atlas ($200,000)
+- Delivery: Kiwibot K3 ($2,500), Starship Bot ($8,000), Nuro R3 ($50,000)
+- Industrial: FANUC LR Mate ($25,000), KUKA KR CYBERTECH ($55,000), KUKA KR QUANTEC ($120,000)
+
 **Order form includes:**
 - Robot type selection
 - Use case description
@@ -78,8 +103,9 @@ Company information:
 2. Help users navigate the site
 3. Explain how to use the Playground workflow builder
 4. Guide users through robot ordering process
-5. Clarify technical documentation
-6. Provide helpful tips and best practices
+5. Help users understand and use the ROI Calculator
+6. Clarify technical documentation
+7. Provide helpful tips and best practices
 
 ## RESPONSE STYLE
 - Be friendly and concise
@@ -87,6 +113,7 @@ Company information:
 - Give specific, actionable answers
 - If asked about Playground, explain block types and connections
 - If asked about pricing, mention the three tiers
+- If asked about ROI Calculator, explain how to use it and what metrics mean
 - Always be helpful and encouraging
 
 ## TOKEN CONTRACT
@@ -97,7 +124,7 @@ Remember: You're helping users explore and use the TaskBoard platform effectivel
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { role: 'assistant', content: 'Hi! 👋 I\'m TaskBoard Assistant. How can I help you today?\n\nI can answer questions about:\n• How the platform works\n• Building workflows in Playground\n• Robot types and pricing\n• Technical documentation' }
+    { role: 'assistant', content: 'Hi! 👋 I\'m TaskBoard Assistant. How can I help you today?\n\nI can answer questions about:\n• How the platform works\n• Building workflows in Playground\n• Robot types and pricing\n• ROI Calculator for investments\n• Technical documentation' }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);

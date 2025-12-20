@@ -47,6 +47,7 @@
 .nav-links {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.25rem;
   padding: 0.25rem;
   background: var(--nav-pills-bg);
@@ -62,8 +63,9 @@
 
 .nav-link {
   position: relative;
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   padding: 0.6rem 1rem;
   text-decoration: none;
@@ -76,11 +78,14 @@
   border-radius: 8px;
   transition: color 0.2s ease, background 0.2s ease;
   white-space: nowrap;
+  text-align: center;
 }
 
 .nav-link .icon {
   flex-shrink: 0;
   opacity: 0.7;
+  width: 16px;
+  height: 16px;
 }
 
 .nav-link.active .icon {
