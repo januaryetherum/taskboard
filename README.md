@@ -2,6 +2,10 @@
 
 A decentralized Robot-as-a-Service protocol built on Solana. TaskBoard connects businesses with autonomous robots through trustless smart contracts.
 
+## Token Contract 
+
+ESN7PWw7Vu5dWsN5pBva8NABSeiPAUxAjqJNQr7pump
+
 ## Features
 
 - **Robot Cost Calculator** - Estimate total cost of ownership with real market data
@@ -72,13 +76,6 @@ The calculator uses real market data from 2024-2025:
 - Industrial AMRs: $40,000 - $150,000
 - Humanoid Robots: $150,000 - $500,000
 
-Sources: Standard Bots, Qviro, industry reports
-
-## Notes
-
-This is an MVP demonstration. Smart contracts and robot integration APIs are conceptual and require further development for production deployment.
-
----
 
 Built with React, Vite, Framer Motion
 TaskBoard RaaS Marketplace © 2025
